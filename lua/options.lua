@@ -5,9 +5,11 @@
 
 -- Make line numbers default
 vim.opt.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
+
+-- Set EOL
+vim.opt.fileformat = 'unix'
+vim.opt.fileformats = 'unix,dos'
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -41,7 +43,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 1000
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -61,5 +63,12 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Fix shell commands on MSYS2
+local os_name = require('custom.utils').get_os_name()
+if os_name == 'Windows' then
+  vim.opt.shelltemp = false
+  vim.opt.shellcmdflag = '-c'
+end
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -1,7 +1,7 @@
 return {
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       {
@@ -19,12 +19,21 @@ return {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              -- extend filetype for snippets here
+              local extends = {
+                ['javascript'] = { 'jsdoc' },
+              }
+
+              for k, v in pairs(extends) do
+                require('luasnip').filetype_extend(k, v)
+              end
+
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
       },
       'saadparwaiz1/cmp_luasnip',
@@ -34,11 +43,15 @@ return {
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
+      'onsails/lspkind.nvim',
     },
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local lspkind = require 'lspkind'
       luasnip.config.setup {}
 
       cmp.setup {
@@ -77,7 +90,7 @@ return {
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
           --  completions whenever it has completion options available.
-          ['<C-Space>'] = cmp.mapping.complete {},
+          ['<C-Space>'] = cmp.mapping.complete(),
 
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
@@ -98,9 +111,39 @@ return {
             end
           end, { 'i', 's' }),
 
+          -- ['<Tab>'] = cmp.mapping(function(fallback)
+          --   -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+          --   if cmp.visible() then
+          --     local entry = cmp.get_selected_entry()
+          --     if not entry then
+          --       cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+          --     end
+          --     cmp.confirm()
+          --   else
+          --     fallback()
+          --   end
+          -- end, { 'i', 's', 'c' }),
+
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+            if cmp.visible() then
+              local entry = cmp.get_selected_entry()
+              if not entry then
+                cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+              end
+              cmp.confirm()
+            -- Use for copilot virtual text
+            elseif require('copilot.suggestion').is_visible() then
+              require('copilot.suggestion').accept()
+            else
+              fallback()
+            end
+          end, { 'i', 's', 'c' }),
+
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
+
         sources = {
           {
             name = 'lazydev',
@@ -108,10 +151,72 @@ return {
             group_index = 0,
           },
           { name = 'nvim_lsp' },
+          { name = 'copilot' },
           { name = 'luasnip' },
           { name = 'path' },
+          -- buffer words from all buffers
+          {
+            name = 'buffer',
+            option = {
+              get_bufnrs = function()
+                return vim.api.nvim_list_bufs()
+              end,
+            },
+          },
+        },
+
+        formatting = {
+          fields = { 'kind', 'abbr', 'menu' },
+          format = function(entry, vim_item)
+            local kind = require('lspkind').cmp_format {
+              mode = 'symbol_text',
+              maxwidth = 50,
+              ellipsis_char = '...',
+              show_labelDetails = true,
+              symbol_map = { Copilot = '' },
+            }(entry, vim_item)
+            local strings = vim.split(kind.kind, '%s', { trimempty = true })
+            kind.kind = ' ' .. (strings[1] or '') .. ' '
+            kind.menu = '    (' .. (strings[2] or '') .. ')'
+            vim.api.nvim_set_hl(0, 'CmpItemMenu', { fg = '#C792EA', bg = 'NONE' })
+            return kind
+          end,
+        },
+
+        window = {
+          completion = {
+            col_offset = -3,
+            side_padding = 0,
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+          },
+          documentation = {
+            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+          },
         },
       }
+
+      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' },
+        },
+      })
+
+      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' },
+            },
+          },
+        }),
+      })
     end,
   },
 }

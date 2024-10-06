@@ -64,6 +64,17 @@ return {
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>b', group = '[B]uffer' },
+        { '<leader>l', group = '[L]SP' },
+        { '<leader>q', group = '[Q]uickfix' },
+        { '<leader>f', group = '[F]ormat' },
+        { '<leader>m', group = '[M]ulticursor' },
+      },
+
+      triggers = {
+        { '<auto>', mode = 'nisotc' },
+        { '<leader>', mode = { 'v' } },
+        { 'g', mode = { 'v' } },
       },
     },
   },

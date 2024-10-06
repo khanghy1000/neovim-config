@@ -104,7 +104,8 @@ return {
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-
+          -- Restart LSP
+          map('<leader>lr', '<cmd>LspRestart<CR>', 'Restart LSP')
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -143,6 +144,7 @@ return {
           --
           -- This may be unwanted, since they displace some of your code
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            vim.lsp.inlay_hint.enable()
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
@@ -191,6 +193,37 @@ return {
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
+        -- ts_ls = {
+        --   settings = {
+        --     typescript = {
+        --       inlayHints = {
+        --         includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+        --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        --       },
+        --     },
+        --     javascript = {
+        --       inlayHints = {
+        --         includeInlayParameterNameHints = 'all', -- 'none' | 'literals' | 'all'
+        --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        --       },
+        --     },
+        --   },
+        -- },
+
+        tailwindcss = {},
+        html = {},
+        cssls = {},
+        emmet_language_server = {},
+        eslint = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                typeCheckingMode = 'standard',
+              },
             },
           },
         },
