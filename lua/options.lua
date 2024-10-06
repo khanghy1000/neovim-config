@@ -69,6 +69,8 @@ local os_name = require('custom.utils').get_os_name()
 if os_name == 'Windows' then
   vim.opt.shelltemp = false
   vim.opt.shellcmdflag = '-c'
+  vim.opt.shellxquote = ''
+  vim.opt.shellxescape = ''
 end
 
 -- vim: ts=2 sts=2 sw=2 et
