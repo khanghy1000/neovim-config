@@ -224,6 +224,11 @@ return {
               analysis = {
                 typeCheckingMode = 'standard',
               },
+              inlayHints = {
+                variableTypes = false,
+                callArgumentNames = true,
+                functionReturnTypes = false,
+              },
             },
           },
         },
