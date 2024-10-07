@@ -69,6 +69,7 @@ return {
         { '<leader>q', group = '[Q]uickfix' },
         { '<leader>f', group = '[F]ormat' },
         { '<leader>m', group = '[M]ulticursor' },
+        { '<leader>d', group = '[D]iagnostics' },
       },
 
       triggers = {
