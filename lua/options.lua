@@ -7,6 +7,12 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Set default tab width & expand tab
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 -- Set EOL
 vim.opt.fileformat = 'unix'
 vim.opt.fileformats = 'unix,dos'
