@@ -18,6 +18,21 @@ return {
     'justinmk/vim-gtfo',
   },
   {
+    'HiPhish/rainbow-delimiters.nvim',
+    config = function()
+      require('rainbow-delimiters.setup').setup {
+        highlight = {
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterCyan',
+        },
+      }
+    end,
+  },
+  {
     'jiaoshijie/undotree',
     dependencies = 'nvim-lua/plenary.nvim',
     config = true,
