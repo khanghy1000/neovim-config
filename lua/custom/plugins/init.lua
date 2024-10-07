@@ -1,4 +1,6 @@
 return {
+  'justinmk/vim-gtfo',
+  'HiPhish/rainbow-delimiters.nvim',
   {
     'NvChad/nvim-colorizer.lua',
     opts = {},
@@ -8,29 +10,6 @@ return {
     opts = {
       enable_autocmd = false,
     },
-  },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    opts = {},
-  },
-  {
-    'justinmk/vim-gtfo',
-  },
-  {
-    'HiPhish/rainbow-delimiters.nvim',
-    config = function()
-      require('rainbow-delimiters.setup').setup {
-        highlight = {
-          'RainbowDelimiterYellow',
-          'RainbowDelimiterBlue',
-          'RainbowDelimiterOrange',
-          'RainbowDelimiterGreen',
-          'RainbowDelimiterViolet',
-          'RainbowDelimiterCyan',
-        },
-      }
-    end,
   },
   {
     'jiaoshijie/undotree',
