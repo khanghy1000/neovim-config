@@ -218,6 +218,7 @@ return {
         cssls = {},
         emmet_language_server = {},
         eslint = {},
+        gopls = {},
         basedpyright = {
           settings = {
             basedpyright = {
