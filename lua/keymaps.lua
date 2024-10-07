@@ -28,7 +28,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 -- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<leader>bd', utils.bufremove, { desc = 'Delete Buffer' })
+vim.keymap.set('n', '<leader>q', utils.bufremove, { desc = '[Q] Delete buffer' })
 
 -- disable marcos
 vim.keymap.set('n', 'q', '')
