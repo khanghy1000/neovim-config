@@ -36,18 +36,18 @@ return {
       --  Check out: https://github.com/echasnovski/mini.nvim
 
       -- MiniFiles
-      require('mini.files').setup {
-        mappings = {
-          synchronize = 'w',
-        },
+      -- require('mini.files').setup {
+      --   mappings = {
+      --     synchronize = 'w',
+      --   },
+      --
+      --   options = {
+      --     use_as_default_explorer = false,
+      --   },
+      -- }
 
-        options = {
-          use_as_default_explorer = false,
-        },
-      }
-
-      local show_dotfiles = true
-      vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = '[E] Open MiniFiles' })
+      -- local show_dotfiles = true
+      -- vim.keymap.set('n', '<leader>e', require('mini.files').open, { desc = '[E] Open MiniFiles' })
 
       -- MiniComment
       require('mini.comment').setup {
