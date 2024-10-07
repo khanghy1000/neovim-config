@@ -11,7 +11,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '\\', ':Neotree toggle action=show<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
     close_if_last_window = true,
