@@ -86,4 +86,49 @@ function M.open_external(path)
   assert(jid > 0, 'Failed to start job')
 end
 
+function M.is_non_text_file(filename)
+  local _, ext = string.match(filename, '^(.+)%.([^%.\\/]+)$')
+  if not ext then
+    return false
+  end
+  local non_text_exts = {
+    -- documents
+    'pdf',
+    'doc',
+    'docx',
+    'xls',
+    'xlsx',
+    'ppt',
+    'pptx',
+    -- images
+    'jpg',
+    'jpeg',
+    'png',
+    'gif',
+    'svg',
+    'webp',
+    'ico',
+    'bmp',
+    -- videos
+    'mp3',
+    'mp4',
+    'avi',
+    'mkv',
+    -- archives
+    'zip',
+    'tar',
+    'gz',
+    'xz',
+    'bz2',
+    'rar',
+    '7z',
+  }
+  for _, non_text_ext in ipairs(non_text_exts) do
+    if ext == non_text_ext then
+      return true
+    end
+  end
+  return false
+end
+
 return M

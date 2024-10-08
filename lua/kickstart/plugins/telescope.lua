@@ -51,7 +51,7 @@ return {
       -- do as well as how to actually do it!
 
       local actions_state = require 'telescope.actions.state'
-      -- local actions = require 'telescope.actions'
+      local actions = require 'telescope.actions'
       local utils = require 'custom.utils'
 
       local function open_external(prompt_bufnr)
@@ -68,6 +68,26 @@ return {
         local path = getmetatable(selection).cwd .. dir_separator .. selection[1]
         utils.open_external(path)
         -- actions.close(prompt_bufnr)
+      end
+
+      local function open_external_if_match_extenstion(prompt_bufnr)
+        local selection = actions_state.get_selected_entry()
+        if selection == nil then
+          return
+        end
+
+        if not utils.is_non_text_file(selection[1]) then
+          actions.select_default(prompt_bufnr)
+          return
+        end
+
+        local dir_separator = '/'
+        if utils.get_os_name() == 'Windows' then
+          dir_separator = '\\'
+        end
+
+        local path = getmetatable(selection).cwd .. dir_separator .. selection[1]
+        utils.open_external(path)
       end
 
       -- [[ Configure Telescope ]]
@@ -98,6 +118,7 @@ return {
             mappings = {
               i = {
                 ['<C-o>'] = open_external,
+                ['<CR>'] = open_external_if_match_extenstion,
               },
             },
           },
