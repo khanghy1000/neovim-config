@@ -33,12 +33,10 @@ vim.keymap.set('n', '<leader>q', utils.bufremove, { desc = '[Q] Delete buffer' }
 vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 
 -- disable marcos
-vim.keymap.set('n', 'q', '')
-vim.keymap.set('x', 'q', '')
+vim.keymap.set({ 'n', 'x' }, 'q', '<Nop>')
 
 -- del without yank
-vim.keymap.set('n', 'D', '')
-vim.keymap.set('x', 'D', '')
+vim.keymap.set({ 'n', 'x' }, 'D', '')
 vim.keymap.set('n', 'D', '"_dd')
 vim.keymap.set('x', 'D', '"_d')
 
