@@ -30,6 +30,8 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 vim.keymap.set('n', '<leader>q', utils.bufremove, { desc = '[Q] Delete buffer' })
 
+vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
+
 -- disable marcos
 vim.keymap.set('n', 'q', '')
 vim.keymap.set('x', 'q', '')
