@@ -4,8 +4,15 @@ local utils = require 'custom.utils'
 --  See `:help vim.keymap.set()`
 
 -- Remove highlight
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', function()
+  utils.close_floating()
+  vim.cmd 'nohlsearch'
+end)
+
+vim.keymap.set('n', '<C-c>', function()
+  utils.close_floating()
+  vim.cmd 'nohlsearch'
+end)
 
 -- Diagnostic keymaps
 -- vim.keymap.set('n', '<leader>qb', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

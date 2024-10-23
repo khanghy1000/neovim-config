@@ -17,12 +17,15 @@ return {
     -- Add and remove cursors with control + left click.
     set('n', '<c-leftmouse>', mc.handleMouse)
 
+    local utils = require 'custom.utils'
+
     set('n', '<esc>', function()
       if not mc.cursorsEnabled() then
         mc.enableCursors()
       elseif mc.hasCursors() then
         mc.clearCursors()
       else
+        utils.close_floating()
         vim.cmd 'nohlsearch'
       end
     end, { desc = 'Clear cursors' })
