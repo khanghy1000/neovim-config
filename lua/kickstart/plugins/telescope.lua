@@ -116,6 +116,8 @@ return {
               '.svelte%-kit',
             },
             hidden = true,
+            no_ignore = true,
+            no_ignore_parent = true,
             mappings = {
               i = {
                 ['<C-o>'] = open_external,
