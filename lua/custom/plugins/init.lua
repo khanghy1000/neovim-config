@@ -6,16 +6,6 @@ return {
     opts = {},
   },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-      options = {
-        component_separators = { left = '|', right = '|' },
-        section_separators = '',
-      },
-    },
-  },
-  {
     'JoosepAlviste/nvim-ts-context-commentstring',
     opts = {
       enable_autocmd = false,
