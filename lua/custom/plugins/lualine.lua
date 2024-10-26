@@ -22,6 +22,7 @@ return {
       sections = {
         lualine_x = {
           'encoding',
+          indent_info,
           {
             'fileformat',
             icons_enabled = true,
@@ -31,8 +32,8 @@ return {
               mac = 'CR',
             },
           },
+
           'filetype',
-          indent_info,
         },
       },
     }
