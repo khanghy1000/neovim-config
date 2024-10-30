@@ -1,6 +1,7 @@
 return {
   'justinmk/vim-gtfo',
   'HiPhish/rainbow-delimiters.nvim',
+  'tpope/vim-fugitive',
   {
     'NvChad/nvim-colorizer.lua',
     opts = {},
