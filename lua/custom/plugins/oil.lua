@@ -11,9 +11,11 @@ return {
     },
     keymaps = {
       ['g?'] = 'actions.show_help',
-      ['<CR>'] = 'actions.select',
       ['q'] = 'actions.parent',
       ['`'] = 'actions.open_cwd',
+      ['<CR>'] = 'actions.select',
+      ['<C-v>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
+      ['<C-x>'] = { 'actions.select', opts = { horizontal = true }, desc = 'Open the entry in a horizontal split' },
       ['<C-c>'] = 'actions.close',
       ['gx'] = 'actions.open_external',
       ['g\\'] = 'actions.toggle_trash',
@@ -22,6 +24,6 @@ return {
 
   config = function(_, opts)
     require('oil').setup(opts)
-    vim.keymap.set('n', '<leader>o', require('oil').open, { desc = 'Toggle [O]il' })
+    vim.keymap.set('n', '<leader>o', require('oil').open_float, { desc = 'Open [O]il' })
   end,
 }
