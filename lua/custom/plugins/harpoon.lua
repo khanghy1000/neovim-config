@@ -27,18 +27,18 @@ return {
 
     vim.keymap.set('n', '<leader>1', function()
       harpoon:list():select(1)
-    end, { desc = 'Navigate to mark 1' })
+    end, { desc = 'Navigate to mark [1]' })
     vim.keymap.set('n', '<leader>2', function()
       harpoon:list():select(2)
-    end, { desc = 'Navigate to mark 2' })
+    end, { desc = 'Navigate to mark [2]' })
     vim.keymap.set('n', '<leader>3', function()
       harpoon:list():select(3)
-    end, { desc = 'Navigate to mark 3' })
+    end, { desc = 'Navigate to mark [3]' })
     vim.keymap.set('n', '<leader>4', function()
       harpoon:list():select(4)
-    end, { desc = 'Navigate to mark 4' })
+    end, { desc = 'Navigate to mark [4]' })
     vim.keymap.set('n', '<leader>5', function()
       harpoon:list():select(5)
-    end, { desc = 'Navigate to mark 5' })
+    end, { desc = 'Navigate to mark [5]' })
   end,
 }

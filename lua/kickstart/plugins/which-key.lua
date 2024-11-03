@@ -66,10 +66,13 @@ return {
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>b', group = '[B]uffer' },
         { '<leader>l', group = '[L]SP' },
-        { '<leader>q', group = '[Q]uickfix' },
-        { '<leader>f', group = '[F]ormat' },
-        { '<leader>m', group = '[M]ulticursor' },
+        -- { '<leader>q', group = '[Q]uickfix' },
+        { '<leader>f', group = '[F]ormat', mode = { 'n', 'v' } },
+        { '<leader>m', group = '[M]ulticursor', mode = { 'n', 'v' } },
         { '<leader>d', group = '[D]iagnostics' },
+        { '<leader>g', group = '[G]it' },
+        { '<leader>/', group = '[/] Comment line', mode = { 'n' } },
+        { '<leader>/', group = '[/] Comment selection', mode = { 'v' } },
       },
 
       triggers = {

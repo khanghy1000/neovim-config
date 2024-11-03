@@ -13,13 +13,13 @@ return {
     end, { desc = 'Add cursor to next word by matching word/selection' })
     set({ 'n', 'v' }, '<leader>j', function()
       mc.matchSkipCursor(1)
-    end, { desc = 'Skip cursor to next word by matching word/selection' })
+    end, { desc = '[J] Skip cursor to next word by matching word/selection' })
     set({ 'n', 'v' }, '<C-k>', function()
       mc.matchAddCursor(-1)
     end, { desc = 'Add cursor to next word by matching word/selection' })
     set({ 'n', 'v' }, '<leader>k', function()
       mc.matchSkipCursor(-1)
-    end, { desc = 'Skip cursor to next word by matching word/selection' })
+    end, { desc = '[K] Skip cursor to next word by matching word/selection' })
 
     -- Add and remove cursors with control + left click.
     set('n', '<c-leftmouse>', mc.handleMouse)
@@ -45,7 +45,7 @@ return {
     set('v', 'M', mc.matchCursors, { desc = 'Match cursors within visual selections' })
 
     -- Easy way to add and remove cursors using the main cursor.
-    set({ 'n', 'v' }, '<leader>mt', mc.toggleCursor, { desc = '[T]oggle cursors' })
+    set('n', '<leader>mt', mc.toggleCursor, { desc = '[T]oggle cursors' })
 
     -- bring back cursors if you accidentally clear them
     set('n', '<leader>mr', mc.restoreCursors, { desc = '[R]estore cursors' })
@@ -54,7 +54,7 @@ return {
     set('v', '<leader>ma', mc.alignCursors, { desc = '[A]lign cursors' })
 
     -- Delete the main cursor.
-    set({ 'n', 'v' }, '<leader>md', mc.deleteCursor, { desc = '[D]elete cursor' })
+    set('n', '<leader>md', mc.deleteCursor, { desc = '[D]elete cursor' })
 
     -- Customize how cursors look.
     local hl = vim.api.nvim_set_hl
