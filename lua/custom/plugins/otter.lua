@@ -1,5 +1,8 @@
 return {
   'jmbuhr/otter.nvim',
+  cmd = {
+    'OtterActivate',
+  },
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },
