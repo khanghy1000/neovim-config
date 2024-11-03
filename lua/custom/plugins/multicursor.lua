@@ -8,11 +8,17 @@ return {
     mc.setup()
 
     -- Add or skip adding a new cursor by matching word/selection
-    set({ 'n', 'v' }, '<C-m>', function()
+    set({ 'n', 'v' }, '<C-j>', function()
       mc.matchAddCursor(1)
     end, { desc = 'Add cursor to next word by matching word/selection' })
-    set({ 'n', 'v' }, '<M-m>', function()
+    set({ 'n', 'v' }, '<leader>j', function()
       mc.matchSkipCursor(1)
+    end, { desc = 'Skip cursor to next word by matching word/selection' })
+    set({ 'n', 'v' }, '<C-k>', function()
+      mc.matchAddCursor(-1)
+    end, { desc = 'Add cursor to next word by matching word/selection' })
+    set({ 'n', 'v' }, '<leader>k', function()
+      mc.matchSkipCursor(-1)
     end, { desc = 'Skip cursor to next word by matching word/selection' })
 
     -- Add and remove cursors with control + left click.
