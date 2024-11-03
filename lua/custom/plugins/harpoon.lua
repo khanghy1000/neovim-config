@@ -17,11 +17,11 @@ return {
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, { desc = 'Toggle Harpoon window' })
 
-    vim.keymap.set('n', '<M-]>', function()
+    vim.keymap.set('n', '<M-n>', function()
       harpoon:list():next()
     end, { desc = 'Navigate to next mark' })
 
-    vim.keymap.set('n', '<M-[>', function()
+    vim.keymap.set('n', '<M-p>', function()
       harpoon:list():prev()
     end, { desc = 'Navigate to previous mark' })
 
