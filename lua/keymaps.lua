@@ -15,7 +15,7 @@ vim.keymap.set('n', '<C-c>', function()
 end)
 
 -- Diagnostic keymaps
--- vim.keymap.set('n', '<leader>qb', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>lq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = '[K] Show diagnostics under cursor' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
