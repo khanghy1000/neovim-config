@@ -188,10 +188,10 @@ return {
           completion = {
             col_offset = -3,
             side_padding = 0,
-            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+            border = 'single',
           },
           documentation = {
-            border = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+            border = 'single',
           },
         },
       }

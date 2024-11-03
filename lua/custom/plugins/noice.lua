@@ -17,7 +17,7 @@ return {
         views = {
           cmdline_popup = {
             border = {
-              style = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+              style = 'single',
             },
           },
         },
@@ -28,7 +28,7 @@ return {
         views = {
           hover = {
             border = {
-              style = { '┌', '─', '┐', '│', '┘', '─', '└', '│' },
+              style = 'single',
             },
           },
         },
