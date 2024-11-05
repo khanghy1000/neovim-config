@@ -50,6 +50,8 @@ return {
 
         python = { 'black' },
         go = { 'gofmt' },
+
+        cs = { 'csharpier' },
       },
     },
   },
