@@ -13,6 +13,8 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.opt.colorcolumn = '80'
+
 -- Set EOL
 vim.opt.fileformat = 'unix'
 vim.opt.fileformats = 'unix,dos'
