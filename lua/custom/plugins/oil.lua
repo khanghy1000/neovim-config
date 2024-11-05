@@ -24,6 +24,6 @@ return {
 
   config = function(_, opts)
     require('oil').setup(opts)
-    vim.keymap.set('n', '<leader>o', require('oil').open_float, { desc = 'Open [O]il' })
+    vim.keymap.set('n', '<leader>o', require('oil').open, { desc = 'Open [O]il' })
   end,
 }
