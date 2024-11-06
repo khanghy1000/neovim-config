@@ -5,12 +5,12 @@ local utils = require 'custom.utils'
 
 -- Remove highlight
 vim.keymap.set('n', '<Esc>', function()
-  utils.close_floating()
+  vim.cmd 'fclose!'
   vim.cmd 'nohlsearch'
 end)
 
 vim.keymap.set('n', '<C-c>', function()
-  utils.close_floating()
+  vim.cmd 'fclose!'
   vim.cmd 'nohlsearch'
 end)
 

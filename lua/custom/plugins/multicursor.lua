@@ -32,7 +32,7 @@ return {
       elseif mc.hasCursors() then
         mc.clearCursors()
       else
-        utils.close_floating()
+        vim.cmd 'fclose!'
         vim.cmd 'nohlsearch'
       end
     end, { desc = 'Clear cursors' })
