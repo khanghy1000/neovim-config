@@ -109,6 +109,8 @@ return {
               'target',
               'dist',
               'build',
+              'out/',
+              'out\\',
               -- ignore .git directory only
               '.git\\',
               '.git/',
