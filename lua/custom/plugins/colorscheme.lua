@@ -1,31 +1,37 @@
+local function set_color(color)
+  color = color or 'rose-pine-moon'
+  -- color = color or 'kanagawa-dragon'
+  -- color = color or 'nightfox'
+  -- color = color or 'catppuccin-macchiato'
+
+  vim.cmd.colorscheme(color)
+
+  vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+  vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+end
+
 return {
   {
     'rebelot/kanagawa.nvim',
-    enabled = false,
-    priority = 1000, -- Make sure to load this before all the other start plugins.
+    priority = 1000,
     opts = {
       transparent = true,
     },
     init = function()
-      vim.cmd.colorscheme 'kanagawa-dragon'
-
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+      set_color()
     end,
   },
   {
     'EdenEast/nightfox.nvim',
-    enabled = false,
     priority = 1000,
     opts = { options = { transparent = true } },
     init = function()
-      vim.cmd.colorscheme 'nightfox'
+      set_color()
     end,
   },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
-    -- enabled = false,
     priority = 1000,
     opts = {
       transparent_background = true,
@@ -38,7 +44,19 @@ return {
       end,
     },
     init = function()
-      vim.cmd.colorscheme 'catppuccin-macchiato'
+      set_color()
+    end,
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    opts = {
+      styles = {
+        transparency = true,
+      },
+    },
+    init = function()
+      set_color()
     end,
   },
 }
