@@ -1,8 +1,12 @@
 local function set_color(color)
-  color = color or 'rose-pine-moon'
-  -- color = color or 'kanagawa-dragon'
-  -- color = color or 'nightfox'
-  -- color = color or 'catppuccin-macchiato'
+  local colors = {
+    'rose-pine-moon',
+    'kanagawa-dragon',
+    'nightfox',
+    'catppuccin-macchiato',
+  }
+
+  color = color or colors[1]
 
   vim.cmd.colorscheme(color)
 
