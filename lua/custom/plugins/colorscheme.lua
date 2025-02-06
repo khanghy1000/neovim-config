@@ -1,9 +1,7 @@
 local function set_color(color)
   local colors = {
-    'rose-pine-moon',
-    'kanagawa-dragon',
-    'nightfox',
     'catppuccin-macchiato',
+    'rose-pine-moon',
   }
 
   color = color or colors[1]
