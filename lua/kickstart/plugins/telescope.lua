@@ -50,45 +50,47 @@ return {
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
 
-      local actions_state = require 'telescope.actions.state'
-      local actions = require 'telescope.actions'
-      local utils = require 'custom.utils'
+      -- TODO: remove open_external and open_external_if_match_extenstion
+      --
+      -- local actions_state = require 'telescope.actions.state'
+      -- local actions = require 'telescope.actions'
+      -- local utils = require 'custom.utils'
 
-      local function open_external(prompt_bufnr)
-        local selection = actions_state.get_selected_entry()
-        if selection == nil then
-          return
-        end
+      -- local function open_external(prompt_bufnr)
+      --   local selection = actions_state.get_selected_entry()
+      --   if selection == nil then
+      --     return
+      --   end
+      --
+      --   local dir_separator = '/'
+      --   if utils.get_os_name() == 'Windows' then
+      --     dir_separator = '\\'
+      --   end
+      --
+      --   local path = getmetatable(selection).cwd .. dir_separator .. selection[1]
+      --   utils.open_external(path)
+      --   -- actions.close(prompt_bufnr)
+      -- end
 
-        local dir_separator = '/'
-        if utils.get_os_name() == 'Windows' then
-          dir_separator = '\\'
-        end
-
-        local path = getmetatable(selection).cwd .. dir_separator .. selection[1]
-        utils.open_external(path)
-        -- actions.close(prompt_bufnr)
-      end
-
-      local function open_external_if_match_extenstion(prompt_bufnr)
-        local selection = actions_state.get_selected_entry()
-        if selection == nil then
-          return
-        end
-
-        if not utils.is_non_text_file(selection[1]) then
-          actions.select_default(prompt_bufnr)
-          return
-        end
-
-        local dir_separator = '/'
-        if utils.get_os_name() == 'Windows' then
-          dir_separator = '\\'
-        end
-
-        local path = getmetatable(selection).cwd .. dir_separator .. selection[1]
-        utils.open_external(path)
-      end
+      -- local function open_external_if_match_extenstion(prompt_bufnr)
+      --   local selection = actions_state.get_selected_entry()
+      --   if selection == nil then
+      --     return
+      --   end
+      --
+      --   if not utils.is_non_text_file(selection[1]) then
+      --     actions.select_default(prompt_bufnr)
+      --     return
+      --   end
+      --
+      --   local dir_separator = '/'
+      --   if utils.get_os_name() == 'Windows' then
+      --     dir_separator = '\\'
+      --   end
+      --
+      --   local path = getmetatable(selection).cwd .. dir_separator .. selection[1]
+      --   utils.open_external(path)
+      -- end
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
@@ -123,12 +125,13 @@ return {
             hidden = true,
             no_ignore = true,
             no_ignore_parent = true,
-            mappings = {
-              i = {
-                ['<C-o>'] = open_external,
-                ['<CR>'] = open_external_if_match_extenstion,
-              },
-            },
+            -- TODO: remove unused mappings
+            -- mappings = {
+            --   i = {
+            --     ['<C-o>'] = open_external,
+            --     ['<CR>'] = open_external_if_match_extenstion,
+            --   },
+            -- },
           },
           colorscheme = {
             enable_preview = true,
