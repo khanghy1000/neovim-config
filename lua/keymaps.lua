@@ -42,10 +42,12 @@ vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 -- disable marcos
 vim.keymap.set({ 'n', 'x' }, 'q', '<Nop>')
 
--- del without yank
-vim.keymap.set({ 'n', 'x' }, 'D', '')
+-- del without replace paste register
 vim.keymap.set('n', 'D', '"_dd')
 vim.keymap.set('x', 'D', '"_d')
+
+-- paste in visual mode without replace paste register
+vim.keymap.set('x', 'P', '"_dP`]')
 
 -- yank/paste then move cursor to last pasted line
 vim.keymap.set('n', 'p', 'p`]')
@@ -63,9 +65,6 @@ vim.keymap.set('n', '}', '}zz')
 -- jump between search then center screen
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
-
--- replace without replace paste register
-vim.keymap.set('x', '<leader>p', [["_dP]], { desc = '[P]aste without replace paste register' })
 
 -- Move code block up and down
 vim.keymap.set('x', 'J', ":m '>+1<CR>gv=gv")
