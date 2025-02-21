@@ -61,6 +61,10 @@ return {
           comment_visual = '<leader>/',
         },
       }
+
+      -- MiniBufremove
+      require('mini.bufremove').setup()
+      vim.keymap.set('n', '<leader>q', require('mini.bufremove').delete, { desc = '[Q] Delete current buffer' })
     end,
   },
 }

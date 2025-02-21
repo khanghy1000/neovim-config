@@ -35,8 +35,6 @@ vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = '[K] Show d
 -- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 -- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<leader>q', utils.bufremove, { desc = '[Q] Delete buffer' })
-
 vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 
 -- disable marcos
