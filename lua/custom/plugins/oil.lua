@@ -16,7 +16,7 @@ return {
       ['<CR>'] = 'actions.select',
       ['<C-v>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
       ['<C-x>'] = { 'actions.select', opts = { horizontal = true }, desc = 'Open the entry in a horizontal split' },
-      ['<C-c>'] = 'actions.close',
+      -- ['<C-c>'] = 'actions.close',
       ['gx'] = 'actions.open_external',
       ['g\\'] = 'actions.toggle_trash',
     },
