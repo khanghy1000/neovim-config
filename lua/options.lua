@@ -77,7 +77,7 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
-vim.o.winborder = 'single'
+-- vim.o.winborder = 'single'
 
 -- Fix shell commands on MSYS2
 local os_name = require('custom.utils').get_os_name()
