@@ -120,6 +120,7 @@ return {
               'bin',
               'obj',
               '.idea',
+              '%__virtual.cs$',
             },
             hidden = true,
             no_ignore = true,
