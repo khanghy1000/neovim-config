@@ -93,7 +93,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.api.nvim_create_autocmd({ 'VimEnter' }, {
   callback = function()
-    if vim.fn.argv(0) == '.' or vim.fn.argv(0) == '' then
+    ---@diagnostic disable-next-line: param-type-mismatch
+    if vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
+      vim.cmd('cd ' .. vim.fn.argv(0))
+    end
+    ---@diagnostic disable-next-line: param-type-mismatch
+    if vim.fn.argv(0) == '.' or vim.fn.argv(0) == '' or vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
       vim.cmd 'Neotree reveal action=show'
     end
   end,
