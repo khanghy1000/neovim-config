@@ -69,6 +69,7 @@ return {
         { '<leader>m', group = '[M]ulticursor', mode = { 'n', 'v' } },
         { '<leader>d', group = '[D]iagnostics' },
         { '<leader>g', group = '[G]it' },
+        { '<leader>y', group = '[Y] Yazi', mode = { 'n' } },
         { '<leader>/', group = '[/] Comment line', mode = { 'n' } },
         { '<leader>/', group = '[/] Comment selection', mode = { 'v' } },
       },
