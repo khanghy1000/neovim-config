@@ -10,6 +10,9 @@ local function set_color(color)
 
   vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
   vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+
+  vim.api.nvim_set_hl(0, 'QuickScopePrimary', { fg = '#000000', bg = '#d29af7', underline = true })
+  vim.api.nvim_set_hl(0, 'QuickScopeSecondary', { fg = '#000000', bg = '#c0caf5', underline = true })
 end
 
 return {
