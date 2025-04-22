@@ -26,6 +26,7 @@ return {
         },
       },
     },
+    lazygit = {},
   },
   keys = {
     {
@@ -118,6 +119,14 @@ return {
         Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
       end,
       desc = '[S]earch [N]eovim files',
+    },
+
+    {
+      '<leader>gg',
+      function()
+        Snacks.lazygit()
+      end,
+      desc = 'LazyGit',
     },
   },
 }
