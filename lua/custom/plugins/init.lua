@@ -31,4 +31,5 @@ return {
     version = '*',
     opts = { open_mapping = [[<C-t>]], direction = 'float' },
   },
+  { 'kevinhwang91/nvim-bqf', ft = 'qf' },
 }
