@@ -34,6 +34,10 @@ return {
     keymaps = {
       show_help = '<f1>',
     },
+    integrations = {
+      grep_in_selected_files = 'fzf-lua',
+      grep_in_directory = 'fzf-lua',
+    },
   },
   -- 👇 if you use `open_for_directories=true`, this is recommended
   init = function()
