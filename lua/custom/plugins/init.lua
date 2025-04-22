@@ -26,4 +26,9 @@ return {
       { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>", desc = '[U]ndotree' },
     },
   },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    opts = { open_mapping = [[<C-t>]], direction = 'float' },
+  },
 }
