@@ -35,34 +35,24 @@ return {
   },
   keys = {
     {
-      '<leader>dd',
+      '<leader>dw',
       '<cmd>Trouble diagnostics toggle<cr>',
-      desc = '[D]iagnostics (Trouble)',
+      desc = '[W]orkspace Diagnostics',
     },
     {
       '<leader>db',
       '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-      desc = '[B]uffer Diagnostics (Trouble)',
-    },
-    {
-      '<leader>ds',
-      '<cmd>Trouble symbols toggle<cr>',
-      desc = '[S]ymbols (Trouble)',
-    },
-    {
-      '<leader>da',
-      '<cmd>Trouble lsp_document_symbols toggle<cr>',
-      desc = '[A]ll symbols (Trouble)',
+      desc = '[B]uffer Diagnostics',
     },
     {
       '<leader>dl',
       '<cmd>Trouble lsp toggle<cr>',
-      desc = '[L]SP Definitions / references / ... (Trouble)',
+      desc = '[L]SP Definitions / references / ...',
     },
     {
-      '<leader>df',
+      '<leader>dq',
       '<cmd>Trouble qflist toggle<cr>',
-      desc = 'Quick[F]ix List (Trouble)',
+      desc = '[Q]uickfix List',
     },
   },
 }
