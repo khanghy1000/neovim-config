@@ -27,18 +27,29 @@ return {
       desc = '[R]esume the last [Y]azi session',
     },
   },
-  ---@type YaziConfig | {}
-  opts = {
-    -- if you want to open yazi instead of netrw, see below for more info
-    open_for_directories = true,
-    keymaps = {
-      show_help = '<f1>',
-    },
-    integrations = {
-      grep_in_selected_files = 'fzf-lua',
-      grep_in_directory = 'fzf-lua',
-    },
-  },
+  config = function()
+    local picker = 'telescope'
+    if pcall(require, 'fzf-lua') then
+      picker = 'fzf-lua'
+    end
+    if pcall(require, 'snacks') then
+      picker = 'snacks.picker'
+    end
+
+    ---@type YaziConfig | {}
+    require('yazi').setup {
+      -- if you want to open yazi instead of netrw, see below for more info
+      open_for_directories = true,
+      keymaps = {
+        show_help = '<f1>',
+      },
+      integrations = {
+        grep_in_selected_files = picker,
+        grep_in_directory = picker,
+      },
+    }
+  end,
+  opts = {},
   -- 👇 if you use `open_for_directories=true`, this is recommended
   init = function()
     -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802

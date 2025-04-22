@@ -82,18 +82,18 @@ return {
 
           -- Find references for the word under your cursor.
           -- map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('grr', '<cmd>Trouble lsp_references toggle<cr>', '[G]oto [R]eferences')
+          map('grr', require('snacks.picker').lsp_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
           -- map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('gri', '<cmd>Trouble lsp_implementations toggle<cr>', '[G]oto [I]mplementation')
+          map('gri', require('snacks.picker').lsp_implementations, '[G]oto [I]mplementation')
 
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
           -- map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('grd', '<cmd>Trouble lsp_definitions toggle<cr>', '[G]oto [D]efinition')
+          map('grd', require('snacks.picker').lsp_definitions, '[G]oto [D]efinition')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -113,7 +113,7 @@ return {
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           -- map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
-          map('grt', '<cmd>Trouble lsp_type_definitions toggle<cr>', '[G]oto [T]ype Definition')
+          map('grt', require('snacks.picker').lsp_type_definitions, '[G]oto [T]ype Definition')
 
           -- Restart LSP
           map('<leader>lr', '<cmd>LspRestart<CR>', '[R]estart LSP')

@@ -2,6 +2,7 @@ return {
   {
     'ibhagwan/fzf-lua',
     event = 'VimEnter',
+    enabled = false,
     dependencies = {
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
@@ -57,7 +58,8 @@ return {
       map('n', '<leader>sr', fzf.resume, { desc = '[S]earch [R]esume' })
       map('n', '<leader>s.', fzf.oldfiles, { desc = "[S]earch Recent Files (repeat '.')" })
       map('n', '<leader><leader>', fzf.buffers, { desc = '[ ] Find existing buffers' })
-      map('n', '<leader>sc', fzf.grep_curbuf, { desc = 'Fuzzily [S]earch in Current Buffer' })
+      map('n', '<leader>sb', fzf.grep_curbuf, { desc = 'Fuzzily [S]earch in Current [B]uffer' })
+      -- NOTE: Missing grep open buffers keymap
       map('n', '<leader>sn', function()
         fzf.files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
