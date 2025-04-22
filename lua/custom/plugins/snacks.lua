@@ -26,6 +26,7 @@ return {
         },
       },
     },
+    gitbrowse = {},
     lazygit = {},
   },
   keys = {
@@ -119,6 +120,14 @@ return {
         Snacks.picker.files { cwd = vim.fn.stdpath 'config' }
       end,
       desc = '[S]earch [N]eovim files',
+    },
+
+    {
+      '<leader>gb',
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = '[G]it [B]rowse',
     },
 
     {
