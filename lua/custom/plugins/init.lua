@@ -2,12 +2,7 @@ return {
   'justinmk/vim-gtfo',
   'HiPhish/rainbow-delimiters.nvim',
   { 'kevinhwang91/nvim-bqf', ft = 'qf' },
-  {
-    'tpope/vim-fugitive',
-    keys = {
-      { '<leader>gd', '<cmd>Gvdiffsplit<cr>', desc = '[G]it [D]iff' },
-    },
-  },
+  'tpope/vim-fugitive',
   {
     'unblevable/quick-scope',
     init = function()
