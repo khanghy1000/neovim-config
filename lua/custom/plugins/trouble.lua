@@ -54,5 +54,10 @@ return {
       '<cmd>Trouble qflist toggle<cr>',
       desc = '[Q]uickfix List',
     },
+    {
+      '<leader>do',
+      '<cmd>Trouble loclist toggle<cr>',
+      desc = '[L]ocation List',
+    },
   },
 }
