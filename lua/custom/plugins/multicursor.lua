@@ -37,6 +37,17 @@ return {
       end
     end, { desc = 'Clear cursors' })
 
+    set('n', '<C-c>', function()
+      if not mc.cursorsEnabled() then
+        mc.enableCursors()
+      elseif mc.hasCursors() then
+        mc.clearCursors()
+      else
+        vim.cmd 'fclose!'
+        vim.cmd 'nohlsearch'
+      end
+    end, { desc = 'Clear cursors' })
+
     -- Append/insert for each line of visual selections.
     set('v', 'I', mc.insertVisual, { desc = 'Insert cursor for each line of visual selections' })
     set('v', 'A', mc.appendVisual, { desc = 'Append cursor for each line of visual selections' })

@@ -37,8 +37,13 @@ vim.keymap.set('n', '<leader>k', vim.diagnostic.open_float, { desc = '[K] Show d
 
 vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 
--- disable marcos
-vim.keymap.set({ 'n', 'x' }, 'q', '<Nop>')
+-- disable marcos and close quickfix window
+vim.keymap.set({ 'n', 'x' }, 'q', function()
+  print(vim.bo.filetype)
+  if vim.bo.filetype == 'qf' then
+    vim.cmd 'q'
+  end
+end)
 
 -- del without replace paste register
 vim.keymap.set('n', 'D', '"_dd')
