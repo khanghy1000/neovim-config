@@ -64,7 +64,13 @@ return {
 
       -- MiniBufremove
       require('mini.bufremove').setup()
-      vim.keymap.set('n', '<leader>q', require('mini.bufremove').delete, { desc = '[Q] Delete current buffer' })
+      vim.keymap.set('n', '<leader>q', function()
+        if require('custom.utils').tab_contains_filetype 'DiffviewFiles' then
+          vim.cmd 'DiffviewClose'
+        else
+          require('mini.bufremove').delete()
+        end
+      end, { desc = '[Q] Delete current buffer' })
     end,
   },
 }

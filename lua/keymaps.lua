@@ -39,8 +39,9 @@ vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 
 -- disable marcos and close quickfix window
 vim.keymap.set({ 'n', 'x' }, 'q', function()
-  print(vim.bo.filetype)
-  if vim.bo.filetype == 'qf' then
+  if require('custom.utils').tab_contains_filetype 'DiffviewFiles' then
+    vim.cmd 'DiffviewClose'
+  elseif vim.bo.filetype == 'qf' then
     vim.cmd 'q'
   end
 end)
@@ -81,8 +82,6 @@ vim.keymap.set('n', '<C-Up>', ':resize -2<CR>')
 vim.keymap.set('n', '<C-Down>', ':resize +2<CR>')
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
-
-vim.keymap.set('n', '<leader>Q', ':tabclose<CR>', { desc = '[Q] Tab close' })
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
