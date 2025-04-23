@@ -29,7 +29,7 @@ return {
             return false
           end
 
-          if require('custom.utils').tab_contains_filetype 'DiffviewFiles' then
+          if require('custom.utils').tab_contains_filetype 'DiffviewFiles' or require('custom.utils').tab_contains_filetype 'DiffviewFileHistory' then
             return false
           end
 

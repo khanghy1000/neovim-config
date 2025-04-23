@@ -39,7 +39,7 @@ vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 
 -- disable marcos and close quickfix window
 vim.keymap.set({ 'n', 'x' }, 'q', function()
-  if require('custom.utils').tab_contains_filetype 'DiffviewFiles' then
+  if require('custom.utils').tab_contains_filetype 'DiffviewFiles' or require('custom.utils').tab_contains_filetype 'DiffviewFileHistory' then
     vim.cmd 'DiffviewClose'
   elseif vim.bo.filetype == 'qf' then
     vim.cmd 'q'
