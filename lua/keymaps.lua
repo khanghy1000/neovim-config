@@ -39,7 +39,7 @@ vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
 
 -- disable marcos and close quickfix window
 vim.keymap.set({ 'n', 'x' }, 'q', function()
-  if require('custom.utils').tab_contains_filetype 'DiffviewFiles' or require('custom.utils').tab_contains_filetype 'DiffviewFileHistory' then
+  if require('custom.utils').curr_tab_has_ft 'DiffviewFiles' or require('custom.utils').curr_tab_has_ft 'DiffviewFileHistory' then
     vim.cmd 'DiffviewClose'
   elseif vim.bo.filetype == 'qf' then
     vim.cmd 'q'
@@ -103,15 +103,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = vim.api.nvim_create_augroup('vim-enter-set-cwd', { clear = true }),
   callback = function()
     ---@diagnostic disable-next-line: param-type-mismatch
     if vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
       vim.cmd('cd ' .. vim.fn.argv(0))
-    end
-    ---@diagnostic disable-next-line: param-type-mismatch
-    if vim.fn.argv(0) == '.' or vim.fn.argv(0) == '' or vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
-      vim.cmd 'Neotree reveal action=show'
     end
   end,
 })

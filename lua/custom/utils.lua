@@ -88,7 +88,7 @@ function M.is_non_text_file(filename)
   return false
 end
 
-function M.tab_contains_filetype(filetype)
+function M.curr_tab_has_ft(filetype)
   local wins = vim.api.nvim_tabpage_list_wins(0)
   for _, win in ipairs(wins) do
     local buf = vim.api.nvim_win_get_buf(win)

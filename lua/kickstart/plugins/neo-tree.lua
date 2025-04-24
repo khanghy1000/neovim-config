@@ -33,4 +33,15 @@ return {
       },
     },
   },
+  init = function()
+    vim.api.nvim_create_autocmd('VimEnter', {
+      group = vim.api.nvim_create_augroup('vim-enter-open-neo-tree', { clear = true }),
+      callback = function()
+        ---@diagnostic disable-next-line: param-type-mismatch
+        if vim.fn.argv(0) == '.' or vim.fn.argv(0) == '' or vim.fn.isdirectory(vim.fn.argv(0)) == 1 then
+          vim.cmd 'Neotree reveal action=show'
+        end
+      end,
+    })
+  end,
 }

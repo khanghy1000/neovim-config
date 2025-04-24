@@ -65,7 +65,7 @@ return {
       -- MiniBufremove
       require('mini.bufremove').setup()
       vim.keymap.set('n', '<leader>q', function()
-        if require('custom.utils').tab_contains_filetype 'DiffviewFiles' or require('custom.utils').tab_contains_filetype 'DiffviewFileHistory' then
+        if require('custom.utils').curr_tab_has_ft 'DiffviewFiles' or require('custom.utils').curr_tab_has_ft 'DiffviewFileHistory' then
           vim.cmd 'DiffviewClose'
         else
           require('mini.bufremove').delete()
