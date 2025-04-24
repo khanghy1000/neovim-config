@@ -5,6 +5,13 @@ return {
     picker = {
       hidden = true,
       ignored = true,
+      win = {
+        input = {
+          keys = {
+            ['<c-x>'] = { 'edit_split', mode = { 'i', 'n' } },
+          },
+        },
+      },
       sources = {
         files = {
           hidden = true,
