@@ -4,7 +4,29 @@ return {
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
     local harpoon = require 'harpoon'
+
     harpoon:setup()
+
+    harpoon:extend {
+      UI_CREATE = function(cx)
+        vim.keymap.set('n', '<C-v>', function()
+          harpoon.ui:select_menu_item { vsplit = true }
+        end, { buffer = cx.bufnr })
+
+        vim.keymap.set('n', '<C-x>', function()
+          harpoon.ui:select_menu_item { split = true }
+        end, { buffer = cx.bufnr })
+
+        for line_number, file in pairs(cx.contents) do
+          if string.find(cx.current_file, file, 1, true) then
+            -- highlight the harpoon menu line that corresponds to the current buffer
+            vim.hl.range(cx.bufnr, 1, 'Function', { line_number - 1, 0 }, { line_number - 1, -1 })
+            -- set the position of the cursor in the harpoon menu to the start of the current buffer line
+            vim.api.nvim_win_set_cursor(cx.win_id, { line_number, 0 })
+          end
+        end
+      end,
+    }
 
     vim.keymap.set('n', '<leader>a', function()
       harpoon:list():add()
