@@ -35,4 +35,12 @@ return {
     version = '*',
     opts = { open_mapping = [[<C-t>]], direction = 'float' },
   },
+  {
+    'stevearc/overseer.nvim',
+    keys = {
+      { '<leader>or', '<cmd>OverseerRun<cr>', desc = '[O]verseer [R]un' },
+      { '<leader>ot', '<cmd>OverseerToggle<cr>', desc = '[O]verseer [T]oggle' },
+    },
+    opts = {},
+  },
 }
