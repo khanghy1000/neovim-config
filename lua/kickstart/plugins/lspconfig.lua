@@ -268,6 +268,7 @@ return {
         emmet_language_server = {},
         eslint = {},
         gopls = {},
+        clangd = {},
         basedpyright = {
           settings = {
             basedpyright = {
