@@ -3,6 +3,7 @@ return {
   'HiPhish/rainbow-delimiters.nvim',
   { 'kevinhwang91/nvim-bqf', ft = 'qf' },
   'tpope/vim-fugitive',
+  'MagicDuck/grug-far.nvim',
   {
     'unblevable/quick-scope',
     init = function()
@@ -47,5 +48,14 @@ return {
     'mrcjkb/rustaceanvim',
     version = '^6', -- Recommended
     lazy = false, -- This plugin is already lazy
+  },
+  {
+    'ThePrimeagen/refactoring.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    lazy = false,
+    opts = {},
   },
 }
