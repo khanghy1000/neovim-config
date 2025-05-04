@@ -121,6 +121,10 @@ return {
             score_offset = 100,
             async = true,
           },
+          path = { score_offset = 3 },
+          lsp = { score_offset = 3 },
+          snippets = { score_offset = -1 },
+          buffer = { score_offset = -3 },
         },
       },
 
