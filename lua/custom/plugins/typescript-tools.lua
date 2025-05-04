@@ -11,6 +11,7 @@ return {
           includeInlayParameterNameHintsWhenArgumentMatchesName = true,
           includeCompletionsForModuleExports = true,
         },
+        expose_as_code_action = 'all',
       },
     }
   end,
