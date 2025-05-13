@@ -5,6 +5,21 @@ return {
   'tpope/vim-fugitive',
   'MagicDuck/grug-far.nvim',
   {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      vim.cmd [[hi TreesitterContextBottom gui=underline guisp=Grey]]
+      vim.cmd [[hi TreesitterContextLineNumberBottom gui=underline guisp=Grey]]
+
+      vim.keymap.set('n', '[p', function()
+        require('treesitter-context').go_to_context(vim.v.count1)
+      end, { silent = true, desc = 'Jump to [P]arent context' })
+
+      require('treesitter-context').setup {
+        multiline_threshold = 1,
+      }
+    end,
+  },
+  {
     'unblevable/quick-scope',
     init = function()
       vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
