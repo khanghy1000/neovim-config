@@ -5,50 +5,6 @@ return {
   'tpope/vim-fugitive',
   'MagicDuck/grug-far.nvim',
   {
-    'nvim-treesitter/nvim-treesitter-context',
-    config = function()
-      vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { sp = '#89ACF3', underline = true })
-      vim.api.nvim_set_hl(0, 'TreesitterContextLineNumberBottom', { sp = '#89ACF3', underline = true })
-
-      vim.keymap.set('n', '[s', function()
-        require('treesitter-context').go_to_context(vim.v.count1)
-      end, { silent = true, desc = 'Jump to [S]ticky scroll context' })
-
-      require('treesitter-context').setup {
-        multiline_threshold = 1,
-      }
-    end,
-  },
-  {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    opts = {
-      modes = {
-        char = {
-          multi_line = false,
-        },
-      },
-    },
-    keys = {
-      {
-        '<leader>j',
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').jump()
-        end,
-        desc = 'Flash [J]ump',
-      },
-      {
-        'S',
-        mode = { 'n', 'x', 'o' },
-        function()
-          require('flash').treesitter()
-        end,
-        desc = 'Flash Treesitter',
-      },
-    },
-  },
-  {
     'NvChad/nvim-colorizer.lua',
     opts = {},
   },
@@ -59,51 +15,13 @@ return {
     },
   },
   {
-    'jiaoshijie/undotree',
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = true,
-    keys = { -- load the plugin only when using it's keybinding:
-      { '<leader>u', "<cmd>lua require('undotree').toggle()<cr>", desc = '[U]ndotree' },
-    },
-    opts = {
-      position = 'right',
-    },
-  },
-  {
     'akinsho/toggleterm.nvim',
     version = '*',
     opts = { open_mapping = [[<C-t>]], direction = 'float' },
   },
   {
-    'stevearc/overseer.nvim',
-    keys = {
-      { '<leader>or', '<cmd>OverseerRun<cr>', desc = '[O]verseer [R]un' },
-      { '<leader>ot', '<cmd>OverseerToggle<cr>', desc = '[O]verseer [T]oggle' },
-    },
-    opts = {},
-  },
-  {
     'mrcjkb/rustaceanvim',
     version = '^6', -- Recommended
     lazy = false, -- This plugin is already lazy
-  },
-  {
-    'ThePrimeagen/refactoring.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-    },
-    lazy = false,
-    opts = {},
-  },
-  {
-    'kawre/leetcode.nvim',
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-      -- "ibhagwan/fzf-lua",
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-    },
-    opts = {},
   },
 }
