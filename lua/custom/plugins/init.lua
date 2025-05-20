@@ -20,10 +20,33 @@ return {
     end,
   },
   {
-    'unblevable/quick-scope',
-    init = function()
-      vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
-    end,
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    opts = {
+      modes = {
+        char = {
+          multi_line = false,
+        },
+      },
+    },
+    keys = {
+      {
+        '<leader>j',
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').jump()
+        end,
+        desc = 'Flash [J]ump',
+      },
+      {
+        'S',
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').treesitter()
+        end,
+        desc = 'Flash Treesitter',
+      },
+    },
   },
   {
     'NvChad/nvim-colorizer.lua',

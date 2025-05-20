@@ -35,6 +35,7 @@ return {
       else
         vim.cmd 'fclose!'
         vim.cmd 'nohlsearch'
+        vim.api.nvim_feedkeys(vim.keycode '<esc>', 'n', false)
       end
     end, { desc = 'Clear cursors' })
 

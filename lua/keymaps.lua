@@ -7,11 +7,13 @@ local utils = require 'custom.utils'
 vim.keymap.set('n', '<Esc>', function()
   vim.cmd 'fclose!'
   vim.cmd 'nohlsearch'
+  vim.api.nvim_feedkeys(vim.keycode '<esc>', 'n', false)
 end)
 
 vim.keymap.set('n', '<C-c>', function()
   vim.cmd 'fclose!'
   vim.cmd 'nohlsearch'
+  vim.api.nvim_feedkeys(vim.keycode '<esc>', 'n', false)
 end)
 
 -- Diagnostic keymaps
