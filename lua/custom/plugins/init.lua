@@ -25,6 +25,7 @@ return {
     lazy = false, -- This plugin is already lazy
   },
   {
+    -- NOTE: Does not work well with multicursor.nvim plugin
     'jinh0/eyeliner.nvim',
     opts = {
       highlight_on_key = true,
