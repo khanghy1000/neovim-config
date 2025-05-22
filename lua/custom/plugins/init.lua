@@ -24,4 +24,16 @@ return {
     version = '^6', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+  {
+    'jinh0/eyeliner.nvim',
+    opts = {
+      highlight_on_key = true,
+      dim = true,
+    },
+  },
+  {
+    'kylechui/nvim-surround',
+    event = 'VeryLazy',
+    opts = {},
+  },
 }

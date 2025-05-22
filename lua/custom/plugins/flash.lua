@@ -4,18 +4,19 @@ return {
   opts = {
     modes = {
       char = {
+        enabled = false,
         multi_line = false,
       },
     },
   },
   keys = {
     {
-      '<leader>j',
+      's',
       mode = { 'n', 'x', 'o' },
       function()
         require('flash').jump()
       end,
-      desc = 'Flash [J]ump',
+      desc = 'Flash Jump',
     },
     {
       'S',
