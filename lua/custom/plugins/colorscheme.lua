@@ -2,6 +2,7 @@ local function set_color(color)
   local colors = {
     'catppuccin-macchiato',
     'rose-pine-moon',
+    'phobos-anomaly',
   }
 
   color = color or colors[1]
@@ -58,6 +59,12 @@ return {
         transparency = true,
       },
     },
+    init = function()
+      set_color()
+    end,
+  },
+  {
+    'mcauley-penney/phobos-anomaly.nvim',
     init = function()
       set_color()
     end,
