@@ -11,7 +11,7 @@ return {
 
       fzf.setup {
         winopts = {
-          border = 'single',
+          -- border = 'single',
         },
 
         defaults = {
@@ -60,9 +60,7 @@ return {
       map('n', '<leader><leader>', fzf.buffers, { desc = '[ ] Find existing buffers' })
       map('n', '<leader>sb', fzf.grep_curbuf, { desc = 'Fuzzily [S]earch in Current [B]uffer' })
       -- NOTE: Missing grep open buffers keymap
-      map('n', '<leader>sn', function()
-        fzf.files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
+      map('n', '<leader>sn', function() fzf.files { cwd = vim.fn.stdpath 'config' } end, { desc = '[S]earch [N]eovim files' })
     end,
   },
 }

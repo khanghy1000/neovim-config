@@ -18,7 +18,7 @@ return {
         views = {
           cmdline_popup = {
             border = {
-              style = 'single',
+              -- style = 'single',
             },
           },
         },
@@ -29,7 +29,7 @@ return {
         views = {
           hover = {
             border = {
-              style = 'single',
+              -- style = 'single',
             },
           },
         },

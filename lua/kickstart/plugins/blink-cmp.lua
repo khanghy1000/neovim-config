@@ -95,7 +95,6 @@ return {
 
       completion = {
         menu = {
-          border = 'single',
           draw = {
             columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind', gap = 1 } },
           },
@@ -105,9 +104,6 @@ return {
         documentation = {
           auto_show = true,
           auto_show_delay_ms = 0,
-          window = {
-            border = 'single',
-          },
         },
       },
 

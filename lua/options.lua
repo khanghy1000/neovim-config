@@ -84,7 +84,7 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
--- vim.o.winborder = 'single'
+vim.o.winborder = 'single'
 
 local os_name = require('custom.utils').get_os_name()
 if os_name == 'Windows' then

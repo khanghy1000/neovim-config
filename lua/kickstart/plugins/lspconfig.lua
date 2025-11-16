@@ -174,7 +174,7 @@ return {
       -- See :help vim.diagnostic.Opts
       vim.diagnostic.config {
         severity_sort = true,
-        float = { border = 'rounded', source = 'if_many' },
+        float = { source = 'if_many' },
         signs = vim.g.have_nerd_font and {
           text = {
             [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -327,7 +327,7 @@ return {
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         -- automatic_enable = true, -- automatically run vim.lsp.enable() for all servers that are installed via Mason
-        automatic_enable = vim.tbl_keys(servers.mason),
+        automatic_enable = vim.tbl_keys(servers.mason or {}),
       }
 
       -- Manually run vim.lsp.enable for all language servers that are *not* installed via Mason
