@@ -40,8 +40,8 @@ return {
       'folke/lazydev.nvim',
       'fang2hou/blink-copilot',
     },
-    --- @module 'blink.cmp'
-    --- @type blink.cmp.Config
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions
@@ -124,7 +124,7 @@ return {
           path = { score_offset = 3 },
           lsp = { score_offset = 3 },
           snippets = { score_offset = -1 },
-          buffer = { score_offset = -3 },
+          buffer = { score_offset = -100 },
         },
       },
 
