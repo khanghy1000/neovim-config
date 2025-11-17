@@ -39,11 +39,11 @@ return {
       dim = true,
     },
   },
-  {
-    'kylechui/nvim-surround',
-    event = 'VeryLazy',
-    opts = {},
-  },
+  -- {
+  --   'kylechui/nvim-surround',
+  --   event = 'VeryLazy',
+  --   opts = {},
+  -- },
   {
     'OXY2DEV/markview.nvim',
     lazy = false,
