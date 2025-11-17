@@ -44,4 +44,9 @@ return {
     event = 'VeryLazy',
     opts = {},
   },
+  {
+    'OXY2DEV/markview.nvim',
+    lazy = false,
+    dependencies = { 'saghen/blink.cmp' },
+  },
 }
