@@ -67,7 +67,6 @@ return {
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { 'gr', group = '[R] LSP Actions', mode = { 'n' } },
         { 'ga', group = '[A]I', mode = { 'n' } },
-        { '<leader>b', group = '[B]uffer' },
         { '<leader>l', group = '[L]SP' },
         -- { '<leader>q', group = '[Q]uickfix' },
         { '<leader>f', group = '[F]ormat', mode = { 'n', 'v' } },
