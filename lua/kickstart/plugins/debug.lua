@@ -23,6 +23,12 @@ return {
     'mason-org/mason.nvim',
     'jay-babu/mason-nvim-dap.nvim',
 
+    -- Virtual text
+    {
+      'theHamsta/nvim-dap-virtual-text',
+      opts = {},
+    },
+
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
   },
@@ -32,6 +38,7 @@ return {
     { '<F1>', function() require('dap').step_into() end, desc = 'Debug: Step Into' },
     { '<F2>', function() require('dap').step_over() end, desc = 'Debug: Step Over' },
     { '<F3>', function() require('dap').step_out() end, desc = 'Debug: Step Out' },
+    { '<F4>', function() require('dap').terminate { hierarchy = true } end, desc = 'DAP Terminate' },
     { '<M-k>', function() require('dapui').eval() end, desc = 'Debug: Eval Expression (Hover)' },
     { '<leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Debug: Toggle Breakpoint' },
     {
@@ -146,8 +153,10 @@ return {
     }
 
     -- Change breakpoint icons
-    vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
-    vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+    -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
+    -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+    vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#ed8796' })
+    vim.api.nvim_set_hl(0, 'DapStop', { fg = '#eed49f' })
     local breakpoint_icons = vim.g.have_nerd_font
         and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
       or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
@@ -157,9 +166,23 @@ return {
       vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
     end
 
-    dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-    dap.listeners.before.event_exited['dapui_config'] = dapui.close
+    dap.listeners.after.event_initialized['dapui_config'] = function()
+      vim.cmd 'Neotree action=close'
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated['dapui_config'] = function()
+      dapui.close()
+      -- Close and reopen Neotree to focus the correct window
+      vim.cmd 'Neotree action=show'
+      vim.cmd 'Neotree action=close'
+      vim.cmd 'Neotree action=show'
+    end
+    dap.listeners.before.event_exited['dapui_config'] = function()
+      dapui.close()
+      vim.cmd 'Neotree action=show'
+      vim.cmd 'Neotree action=close'
+      vim.cmd 'Neotree action=show'
+    end
 
     -- Install golang specific config
     require('dap-go').setup {
