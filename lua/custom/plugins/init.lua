@@ -27,11 +27,6 @@ return {
     opts = { open_mapping = [[<C-t>]], direction = 'float' },
   },
   {
-    'mrcjkb/rustaceanvim',
-    version = '^6', -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
-  {
     -- NOTE: Does not work well with multicursor.nvim plugin
     'jinh0/eyeliner.nvim',
     opts = {
