@@ -275,7 +275,7 @@ return {
           html = {},
           cssls = {},
           emmet_language_server = {},
-          eslint = {},
+          -- eslint = {},
           gopls = {},
           clangd = {},
           basedpyright = {
@@ -331,6 +331,8 @@ return {
       local ensure_installed = vim.tbl_keys(servers.mason or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'prettierd',
+        'eslint_d',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
