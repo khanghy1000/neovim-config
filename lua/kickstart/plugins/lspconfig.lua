@@ -197,8 +197,72 @@ return {
           spacing = 2,
         },
         -- Display multiline diagnostics as virtual lines
-        -- virtual_lines = true,
+        -- virtual_lines = { current_line = true },
+        underline = true,
+        update_in_insert = false,
       }
+
+      local virtlines_enabled = false
+      local virtlines_group = vim.api.nvim_create_augroup('diagnostic_only_virtlines', { clear = true })
+
+      -- Autocmd to disable virtual text if there is diagnostic in the current line
+      local function enable_virtlines_autocmd()
+        -- Clear any existing cmds in the group to prevent duplication
+        vim.api.nvim_clear_autocmds { group = virtlines_group }
+
+        vim.diagnostic.config {
+          virtual_lines = { current_line = true },
+        }
+
+        local og_virt_text = vim.diagnostic.config().virtual_text
+
+        -- Disable virtual text if there is diagnostic in the current line
+        local function auto_hide_virt_text()
+          -- Logic: If on an error line, hide virtual_text (inline)
+          -- otherwise show it.
+          local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+          if vim.tbl_isempty(vim.diagnostic.get(0, { lnum = lnum })) then
+            vim.diagnostic.config { virtual_text = og_virt_text }
+          else
+            vim.diagnostic.config { virtual_text = false }
+          end
+        end
+
+        auto_hide_virt_text()
+
+        vim.api.nvim_create_autocmd({ 'CursorMoved', 'DiagnosticChanged' }, {
+          group = virtlines_group,
+          callback = auto_hide_virt_text,
+        })
+      end
+
+      local function disable_virtlines_autocmd()
+        vim.api.nvim_clear_autocmds { group = virtlines_group }
+
+        vim.diagnostic.config {
+          virtual_text = {
+            source = 'if_many',
+            spacing = 2,
+          },
+          virtual_lines = false,
+        }
+      end
+
+      -- Redraw the diagnostics when the mode change
+      vim.api.nvim_create_autocmd('ModeChanged', {
+        group = vim.api.nvim_create_augroup('diagnostic_redraw', {}),
+        callback = function() pcall(vim.diagnostic.show) end,
+      })
+
+      vim.keymap.set('n', '<leader>dt', function()
+        virtlines_enabled = not virtlines_enabled
+
+        if virtlines_enabled then
+          enable_virtlines_autocmd()
+        else
+          disable_virtlines_autocmd()
+        end
+      end, { desc = '[T]oggle Diagnostic virtual lines' })
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
