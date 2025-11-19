@@ -8,7 +8,27 @@ return {
     ---@type TSConfig
     ---@diagnostic disable-next-line: missing-fields
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'javascript',
+        'tsx',
+        'css',
+        'json',
+        'yaml',
+        'xml',
+        'c_sharp',
+        'rust',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -20,9 +40,7 @@ return {
       },
       indent = { enable = true, disable = { 'ruby' } },
     },
-    init = function()
-      require('nvim-treesitter.install').compilers = { 'zig' }
-    end,
+    init = function() require('nvim-treesitter.install').compilers = { 'zig' } end,
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
