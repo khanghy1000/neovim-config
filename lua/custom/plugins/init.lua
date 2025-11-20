@@ -22,11 +22,6 @@ return {
     },
   },
   {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    opts = { open_mapping = [[<C-t>]], direction = 'float' },
-  },
-  {
     -- NOTE: Does not work well with multicursor.nvim plugin
     'jinh0/eyeliner.nvim',
     opts = {
