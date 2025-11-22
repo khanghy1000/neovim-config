@@ -75,6 +75,7 @@ return {
         { '<leader>g', group = '[G]it' },
         { '<leader>y', group = '[Y]azi', mode = { 'n' } },
         { '<leader>o', group = '[O]verseer', mode = { 'n' } },
+        { '<leader>r', group = '[R]EST Client (Kulala)', mode = { 'n', 'v' } },
         { '<leader>/', group = '[/] Comment line', mode = { 'n' } },
         { '<leader>/', group = '[/] Comment selection', mode = { 'v' } },
       },
