@@ -3,6 +3,13 @@ return {
   version = '*',
   opts = { open_mapping = [[<C-t>]], direction = 'float' },
   config = function(_, opts)
+    local os_name = require('custom.utils').get_os_name()
+    if os_name == 'Windows_NT' then
+      opts = vim.tbl_deep_extend('force', opts, {
+        shell = 'pwsh -NoLogo',
+      })
+    end
+
     require('toggleterm').setup(opts)
 
     -- Scooter integration

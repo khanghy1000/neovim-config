@@ -9,7 +9,7 @@ return {
   config = function()
     local curl_path = 'curl'
     local os_name = require('custom.utils').get_os_name()
-    if os_name == 'Windows' then
+    if os_name == 'Windows_NT' or os_name == 'msys2' then
       curl_path = 'C:\\WINDOWS\\system32\\curl.exe'
     end
     require('kulala').setup {

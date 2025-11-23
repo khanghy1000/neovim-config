@@ -1,13 +1,13 @@
 local M = {}
 
+---Get the current OS name, distinguishing MSYS2 from standard Windows
+---@return "msys2"|"Windows_NT"|"Darwin"|"Linux"|string os_name
 function M.get_os_name()
-  local is_windows = vim.fn.has 'win64' == 1 or vim.fn.has 'win32' == 1 or vim.fn.has 'win16' == 1
-  if is_windows then
-    return 'Windows'
-  else
-    local uname_output = vim.fn.system 'uname'
-    return string.gsub(uname_output, '\n', '')
+  local sysname = vim.uv.os_uname().sysname
+  if sysname == 'Windows_NT' and vim.env.MSYSTEM then
+    return 'msys2'
   end
+  return sysname
 end
 
 local function get_open_cmd(path)
