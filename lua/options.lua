@@ -105,7 +105,7 @@ end
 
 if os_name == 'msys2' then
   -- Fix shell commands on MSYS2
-  vim.opt.shell = 'zsh'
+  vim.opt.shell = 'fish'
   vim.opt.shelltemp = false
   vim.opt.shellcmdflag = '-c'
   vim.opt.shellxquote = ''
