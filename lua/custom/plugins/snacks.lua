@@ -25,7 +25,7 @@ return {
             '**/.git/**',
             '**/.venv/**',
             '**/.svelte-kit/**',
-            '**/bin/**',
+            -- '**/bin/**',
             '**/obj/**',
             '**/.idea/**',
             '**/*__virtual.cs',
