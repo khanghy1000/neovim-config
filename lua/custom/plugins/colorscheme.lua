@@ -3,6 +3,7 @@ local function set_color(color)
     'catppuccin-macchiato',
     'rose-pine-moon',
     'phobos-anomaly',
+    'vague',
   }
 
   color = color or colors[1]
@@ -20,17 +21,13 @@ return {
     opts = {
       transparent = true,
     },
-    init = function()
-      set_color()
-    end,
+    init = function() set_color() end,
   },
   {
     'EdenEast/nightfox.nvim',
     priority = 1000,
     opts = { options = { transparent = true } },
-    init = function()
-      set_color()
-    end,
+    init = function() set_color() end,
   },
   {
     'catppuccin/nvim',
@@ -46,27 +43,28 @@ return {
         }
       end,
     },
-    init = function()
-      set_color()
-    end,
+    init = function() set_color() end,
   },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
+    priority = 1000,
     opts = {
       styles = {
         italic = false,
         transparency = true,
       },
     },
-    init = function()
-      set_color()
-    end,
+    init = function() set_color() end,
   },
   {
     'mcauley-penney/phobos-anomaly.nvim',
-    init = function()
-      set_color()
-    end,
+    priority = 1000,
+    init = function() set_color() end,
+  },
+  {
+    'vague-theme/vague.nvim',
+    priority = 1000,
+    init = function() set_color() end,
   },
 }
