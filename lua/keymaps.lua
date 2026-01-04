@@ -77,9 +77,7 @@ vim.keymap.set('x', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('x', 'K', ":m '<-2<CR>gv=gv")
 
 -- Toggle buffer soft wrap
-vim.keymap.set('n', '<leader>tw', function()
-  vim.cmd 'setlocal wrap!'
-end, { desc = 'Toggle soft wrap' })
+vim.keymap.set('n', '<leader>tw', function() vim.cmd 'setlocal wrap!' end, { desc = 'Toggle soft wrap' })
 
 -- run tmux sessionizer
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
@@ -137,5 +135,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
     end
   end,
 })
+
+vim.api.nvim_create_user_command('FixLineEndings', function() vim.cmd ':%s/\r//g' end, {})
 
 -- vim: ts=2 sts=2 sw=2 et
